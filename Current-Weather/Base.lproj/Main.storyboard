@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="weathericon.ttf">
+            <string>WeatherIcons-Regular</string>
+            <string>WeatherIcons-Regular</string>
+            <string>WeatherIcons-Regular</string>
+            <string>WeatherIcons-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Current_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +25,134 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sleet" translatesAutoresizingMaskIntoConstraints="NO" id="jFn-pE-zmj">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="23°C" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09O-oa-HyL">
+                                <rect key="frame" x="375" y="20" width="205" height="164"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="2Nr-7O-t1Q"/>
+                                    <constraint firstAttribute="height" constant="180" id="7Dg-nI-bTe"/>
+                                    <constraint firstAttribute="width" constant="80" id="r8A-C9-1h6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="WeatherIcons-Regular" family="Weather Icons" pointSize="70"/>
+                                <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="7Dg-nI-bTe"/>
+                                        <exclude reference="r8A-C9-1h6"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="sunny" translatesAutoresizingMaskIntoConstraints="NO" id="G2L-ee-8rw">
+                                <rect key="frame" x="20" y="20" width="272" height="279"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="270" id="DfC-Eh-jbH"/>
+                                    <constraint firstAttribute="height" constant="200" id="of1-eZ-IPh"/>
+                                    <constraint firstAttribute="width" constant="100" id="xGX-HD-ddt"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="DfC-Eh-jbH"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Bangalore, IN" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="qva-fz-6OH">
+                                <rect key="frame" x="20" y="312" width="560" height="97"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="FI8-7F-Zmv"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="hxR-AX-hxZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="WeatherIcons-Regular" family="Weather Icons" pointSize="40"/>
+                                <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="hxR-AX-hxZ"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="wind hollow" translatesAutoresizingMaskIntoConstraints="NO" id="zyO-z8-140">
+                                <rect key="frame" x="20" y="518" width="80" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="WgF-R6-VNP"/>
+                                    <constraint firstAttribute="height" constant="80" id="eNP-FD-VP7"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Mostly Cloudy" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uof-38-D2H">
+                                <rect key="frame" x="300" y="147" width="280" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="r1H-wm-oNr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="WeatherIcons-Regular" family="Weather Icons" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="5 KM/H" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vcc-HA-UDm">
+                                <rect key="frame" x="119" y="518" width="461" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="HJv-xH-vZL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="WeatherIcons-Regular" family="Weather Icons" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uof-38-D2H" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="1Tf-Oh-zSn"/>
+                            <constraint firstItem="qva-fz-6OH" firstAttribute="top" secondItem="G2L-ee-8rw" secondAttribute="bottom" constant="13" id="1bt-2g-BDJ"/>
+                            <constraint firstItem="09O-oa-HyL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="2Gq-0S-ws3"/>
+                            <constraint firstItem="Vcc-HA-UDm" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="9JQ-33-UWQ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zyO-z8-140" secondAttribute="bottom" id="CSh-W8-gf9"/>
+                            <constraint firstItem="G2L-ee-8rw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-50" id="E3Y-9w-dfm"/>
+                            <constraint firstItem="09O-oa-HyL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="IfE-k9-6XL"/>
+                            <constraint firstItem="qva-fz-6OH" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="LBM-3Q-UBq"/>
+                            <constraint firstItem="09O-oa-HyL" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="M0P-Ey-d6S"/>
+                            <constraint firstItem="qva-fz-6OH" firstAttribute="top" secondItem="G2L-ee-8rw" secondAttribute="bottom" constant="13" id="Mgs-X1-Ksr"/>
+                            <constraint firstItem="G2L-ee-8rw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="N2b-Fg-nzk"/>
+                            <constraint firstItem="G2L-ee-8rw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="NgX-sH-uLU"/>
+                            <constraint firstItem="09O-oa-HyL" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Wgh-Mj-Rdf"/>
+                            <constraint firstItem="G2L-ee-8rw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="bBK-8F-r2v"/>
+                            <constraint firstItem="qva-fz-6OH" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="dir-5n-ahB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Vcc-HA-UDm" secondAttribute="bottom" constant="12" id="e3c-hf-sSg"/>
+                            <constraint firstItem="G2L-ee-8rw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="gsX-Nh-6sj"/>
+                            <constraint firstItem="zyO-z8-140" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="hPO-a2-yFV"/>
+                            <constraint firstItem="uof-38-D2H" firstAttribute="leading" secondItem="G2L-ee-8rw" secondAttribute="trailing" id="htA-tY-ZNi"/>
+                            <constraint firstItem="G2L-ee-8rw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="jED-oA-1kz"/>
+                            <constraint firstItem="uof-38-D2H" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="127" id="kEL-9H-hZW"/>
+                            <constraint firstItem="Vcc-HA-UDm" firstAttribute="leading" secondItem="zyO-z8-140" secondAttribute="trailing" constant="8" id="kXc-dX-FdW"/>
+                            <constraint firstItem="qva-fz-6OH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="oLp-Yk-ZlP"/>
+                            <constraint firstItem="09O-oa-HyL" firstAttribute="leading" secondItem="G2L-ee-8rw" secondAttribute="trailing" constant="40" id="oqK-CQ-mCW"/>
+                            <constraint firstItem="G2L-ee-8rw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="p1J-o1-Mb3"/>
+                            <constraint firstItem="qva-fz-6OH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="shE-Xb-BiZ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="E3Y-9w-dfm"/>
+                                <exclude reference="NgX-sH-uLU"/>
+                                <exclude reference="bBK-8F-r2v"/>
+                                <exclude reference="gsX-Nh-6sj"/>
+                                <exclude reference="p1J-o1-Mb3"/>
+                                <exclude reference="dir-5n-ahB"/>
+                                <exclude reference="oLp-Yk-ZlP"/>
+                                <exclude reference="IfE-k9-6XL"/>
+                                <exclude reference="M0P-Ey-d6S"/>
+                                <exclude reference="oqK-CQ-mCW"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="429" y="331"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="sleet" width="600" height="600"/>
+        <image name="sunny" width="700" height="700"/>
+        <image name="wind hollow" width="700" height="700"/>
+    </resources>
 </document>

@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8150" systemVersion="15A204g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8122"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="weathericon.ttf">
+            <string>WeatherIcons-Regular</string>
+            <string>WeatherIcons-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -15,13 +23,46 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drizzle" translatesAutoresizingMaskIntoConstraints="NO" id="ZEA-Wv-sG9">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Weather" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTZ-bX-Ltn">
+                                <rect key="frame" x="20" y="277" width="560" height="90"/>
+                                <fontDescription key="fontDescription" name="WeatherIcons-Regular" family="Weather Icons" pointSize="60"/>
+                                <color key="textColor" red="0.94185248440000002" green="1" blue="0.92232403689999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHj-Kg-9ZB">
+                                <rect key="frame" x="20" y="160" width="560" height="76"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="76" id="PhN-dm-px1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="WeatherIcons-Regular" family="Weather Icons" pointSize="40"/>
+                                <color key="textColor" red="0.94185248440000002" green="1" blue="0.92232403689999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mTZ-bX-Ltn" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="1sb-av-9ZV"/>
+                            <constraint firstAttribute="trailing" secondItem="ZEA-Wv-sG9" secondAttribute="trailing" id="K3z-lJ-SfI"/>
+                            <constraint firstItem="UHj-Kg-9ZB" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="Qtl-sb-6BU"/>
+                            <constraint firstItem="ZEA-Wv-sG9" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="U6C-R2-IUz"/>
+                            <constraint firstItem="mTZ-bX-Ltn" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="UDM-kd-QNJ"/>
+                            <constraint firstItem="UHj-Kg-9ZB" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="WsR-9h-WI3"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="ZEA-Wv-sG9" secondAttribute="bottom" id="tcR-o0-cfk"/>
+                            <constraint firstItem="ZEA-Wv-sG9" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="vor-J9-0q9"/>
+                            <constraint firstItem="UHj-Kg-9ZB" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="140" id="y2k-VH-xOX"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="162" y="248"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="drizzle" width="600" height="600"/>
+    </resources>
 </document>
