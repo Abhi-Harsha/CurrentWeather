@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         }
         
         if let country = weather.Country {
-            cityCountryLbl.text = "Bangalore, \(country)"
+            cityCountryLbl.text = "London, \(country)"
         }
         
         if let degree = weather.CurrentTemperature {
