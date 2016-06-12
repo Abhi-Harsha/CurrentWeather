@@ -29,23 +29,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sleet" translatesAutoresizingMaskIntoConstraints="NO" id="jFn-pE-zmj">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="23°C" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09O-oa-HyL">
-                                <rect key="frame" x="375" y="20" width="205" height="164"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="2Nr-7O-t1Q"/>
-                                    <constraint firstAttribute="height" constant="180" id="7Dg-nI-bTe"/>
-                                    <constraint firstAttribute="width" constant="80" id="r8A-C9-1h6"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="WeatherIcons-Regular" family="Weather Icons" pointSize="70"/>
-                                <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="7Dg-nI-bTe"/>
-                                        <exclude reference="r8A-C9-1h6"/>
-                                    </mask>
-                                </variation>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="sunny" translatesAutoresizingMaskIntoConstraints="NO" id="G2L-ee-8rw">
                                 <rect key="frame" x="20" y="20" width="272" height="279"/>
                                 <constraints>
@@ -87,7 +70,7 @@
                                     <constraint firstAttribute="height" constant="25" id="r1H-wm-oNr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="WeatherIcons-Regular" family="Weather Icons" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="5 KM/H" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vcc-HA-UDm">
@@ -96,8 +79,25 @@
                                     <constraint firstAttribute="height" constant="62" id="HJv-xH-vZL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="WeatherIcons-Regular" family="Weather Icons" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="23°C" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09O-oa-HyL">
+                                <rect key="frame" x="375" y="20" width="205" height="164"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="2Nr-7O-t1Q"/>
+                                    <constraint firstAttribute="height" constant="180" id="7Dg-nI-bTe"/>
+                                    <constraint firstAttribute="width" constant="80" id="r8A-C9-1h6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="WeatherIcons-Regular" family="Weather Icons" pointSize="50"/>
+                                <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="7Dg-nI-bTe"/>
+                                        <exclude reference="r8A-C9-1h6"/>
+                                    </mask>
+                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -144,6 +144,13 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="cityCountryLbl" destination="qva-fz-6OH" id="zem-kA-gl1"/>
+                        <outlet property="degreeLbl" destination="09O-oa-HyL" id="Z2V-d8-n84"/>
+                        <outlet property="weatherDescpLbl" destination="uof-38-D2H" id="eLO-IZ-Wda"/>
+                        <outlet property="weatherIcon" destination="G2L-ee-8rw" id="1fl-HH-Zkv"/>
+                        <outlet property="windSpeedLbl" destination="Vcc-HA-UDm" id="h17-G5-1is"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

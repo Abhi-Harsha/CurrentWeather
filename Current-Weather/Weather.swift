@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class Weather {
     private var _cityID: Int32!
@@ -16,32 +17,77 @@ class Weather {
     private var _weatherDescription: String!
     private var _country: String!
     private var _windSpeed: String!
+    private var _weatherURL = "\(BASE_URL)2643743&units=metric&APPID=\(API_KEY)"
     
-    var CityID: Int32 {
+    
+    var CityID: Int32! {
         return _cityID
     }
     
-    var CityName: String {
+    var CityName: String! {
         return _cityName
     }
     
-    var CurrentTemperature: String {
+    var CurrentTemperature: String! {
         return _currentTemperature
     }
     
-    var Country: String {
+    var Country: String! {
         return _country
     }
     
-    var WindSpeed: String {
+    var WindSpeed: String! {
         return _windSpeed
     }
     
-    var WeatherMain: String {
+    var WeatherMain: String! {
         return _weatherMain
     }
     
-    var WeatherDescription: String {
+    var WeatherDescription: String! {
         return _weatherDescription
+    }
+    
+    func DownloadWeatherDetails(completed: DownloadCompleted) {
+        let url = NSURL(string: "\(_weatherURL)")
+        
+        
+        Alamofire.request(.GET, url!).responseJSON { (reponse: Response<AnyObject, NSError>) in
+        
+            //print(reponse.debugDescription)
+            if let weatherDictonary = reponse.result.value as? Dictionary<String, AnyObject> {
+                //_currentTemp
+                if let weathermain = weatherDictonary["main"] as? Dictionary<String, AnyObject> {
+                    if let temp = weathermain["temp"] as? Float {
+                        self._currentTemperature = "\(temp)"
+                        print(self._currentTemperature)
+                    }
+                }
+                //weatherDescription
+                if let weather = weatherDictonary["weather"] as? [Dictionary<String, AnyObject>] where weather.count > 0 {
+                    if let description = weather[0]["description"] as? String  {
+                        self._weatherDescription = description.capitalizedString
+                        print(self._weatherDescription)
+                    }
+                }
+                
+                //windSpeed
+                if let wind = weatherDictonary["wind"] as? Dictionary<String, AnyObject> {
+                    if let windspeed = wind["speed"] as? Float {
+                        self._windSpeed = "\(windspeed)"
+                        print(self._windSpeed)
+                    }
+                }
+                
+                //country
+                if let sys = weatherDictonary["sys"] as? Dictionary<String, AnyObject> {
+                    if let country = sys["country"] as? String {
+                       self._country = country
+                        print(self._country)
+                    }
+                }
+            }
+        completed()
+        }
     }
 }

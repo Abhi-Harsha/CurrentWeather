@@ -9,17 +9,42 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var weatherIcon: UIImageView!
+    @IBOutlet weak var degreeLbl: UILabel!
+    @IBOutlet weak var weatherDescpLbl: UILabel!
+    @IBOutlet weak var cityCountryLbl: UILabel!
+    @IBOutlet weak var windSpeedLbl: UILabel!
+    var weather: Weather!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        weather = Weather()
+        weather.DownloadWeatherDetails { 
+            print("download complete")
+            self.updateLables()
+        }
     }
+    
+    func updateLables() {
+        if let weatherdescp = weather.WeatherDescription {
+          weatherDescpLbl.text = weatherdescp
+        }
+        
+        if let country = weather.Country {
+            cityCountryLbl.text = "Bangalore, \(country)"
+        }
+        
+        if let degree = weather.CurrentTemperature {
+            degreeLbl.text = "\(degree)°C"
+        }
+        
+        if let windspeed = weather.WindSpeed {
+            windSpeedLbl.text = "\(windspeed) KM\\H"
+        }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-
 }
 
