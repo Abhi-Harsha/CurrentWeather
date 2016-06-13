@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		751903004C27096BECFF76C9 /* Pods_Current_Weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 416A92B25BDE382DD31A4842 /* Pods_Current_Weather.framework */; };
 		A0984B5B1D0C7F3A009FCCD2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0984B5A1D0C7F3A009FCCD2 /* Constants.swift */; };
+		A09B63221D0F259E00976597 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09B63211D0F259E00976597 /* HomeVC.swift */; };
 		A0D855351D0C757100758780 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D855341D0C757100758780 /* AppDelegate.swift */; };
-		A0D855371D0C757100758780 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D855361D0C757100758780 /* ViewController.swift */; };
+		A0D855371D0C757100758780 /* WeatherDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D855361D0C757100758780 /* WeatherDetailsVC.swift */; };
 		A0D8553A1D0C757200758780 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0D855381D0C757200758780 /* Main.storyboard */; };
 		A0D8553C1D0C757200758780 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0D8553B1D0C757200758780 /* Assets.xcassets */; };
 		A0D8553F1D0C757200758780 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0D8553D1D0C757200758780 /* LaunchScreen.storyboard */; };
@@ -22,9 +23,10 @@
 		416A92B25BDE382DD31A4842 /* Pods_Current_Weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Current_Weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4222192E2A65B288E25A4FDA /* Pods-Current-Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Current-Weather.release.xcconfig"; path = "Pods/Target Support Files/Pods-Current-Weather/Pods-Current-Weather.release.xcconfig"; sourceTree = "<group>"; };
 		A0984B5A1D0C7F3A009FCCD2 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A09B63211D0F259E00976597 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		A0D855311D0C757000758780 /* Current-Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Current-Weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0D855341D0C757100758780 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A0D855361D0C757100758780 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A0D855361D0C757100758780 /* WeatherDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsVC.swift; sourceTree = "<group>"; };
 		A0D855391D0C757200758780 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A0D8553B1D0C757200758780 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0D8553E1D0C757200758780 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -124,7 +126,8 @@
 		A0D855481D0C789000758780 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A0D855361D0C757100758780 /* ViewController.swift */,
+				A0D855361D0C757100758780 /* WeatherDetailsVC.swift */,
+				A09B63211D0F259E00976597 /* HomeVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -261,7 +264,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0D855371D0C757100758780 /* ViewController.swift in Sources */,
+				A0D855371D0C757100758780 /* WeatherDetailsVC.swift in Sources */,
+				A09B63221D0F259E00976597 /* HomeVC.swift in Sources */,
 				A0D8554D1D0C7AAE00758780 /* Weather.swift in Sources */,
 				A0D855351D0C757100758780 /* AppDelegate.swift in Sources */,
 				A0984B5B1D0C7F3A009FCCD2 /* Constants.swift in Sources */,

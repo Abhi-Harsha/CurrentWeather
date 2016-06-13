@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  WeatherDetailsVC.swift
 //  Current-Weather
 //
 //  Created by Abhishek H P on 6/11/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class WeatherDetailsVC: UIViewController {
     
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var degreeLbl: UILabel!
@@ -20,8 +20,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        weather = Weather()
         weather.DownloadWeatherDetails { 
             print("download complete")
             self.updateLables()
@@ -45,6 +43,10 @@ class ViewController: UIViewController {
             windSpeedLbl.text = "\(windspeed) KM\\H"
         }
 
+    }
+
+    @IBAction func onBackBtnPressed(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }
 

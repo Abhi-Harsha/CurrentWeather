@@ -17,8 +17,14 @@ class Weather {
     private var _weatherDescription: String!
     private var _country: String!
     private var _windSpeed: String!
-    private var _weatherURL = "\(BASE_URL)2643743&units=metric&APPID=\(API_KEY)"
+    private var _weatherURL: String!
+    //api.openweathermap.org/data/2.5/find?q=London&units=metric&APPID=3a1fb24814c95d9ddd8d216624be7be2
     
+    
+    init(name: String) {
+        self._cityName = name
+        _weatherURL = "\(BASE_URL)&q=\(_cityName)&units=metric&APPID=\(API_KEY)"
+    }
     
     var CityID: Int32! {
         return _cityID
