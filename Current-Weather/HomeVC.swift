@@ -30,7 +30,15 @@ class HomeVC: UIViewController , UISearchBarDelegate{
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         view.endEditing(true)
         LocValLbl.hidden = true
-        weather = Weather(name: "\(LocSearchBar.text)")
+        weather = Weather(name: "\(LocSearchBar.text!)")
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "WeatherDetails" {
+            if let wDetailsVC = segue.destinationViewController as? WeatherDetailsVC {
+                wDetailsVC.weather = self.weather as Weather
+            }
+        }
     }
     
     
@@ -47,4 +55,7 @@ class HomeVC: UIViewController , UISearchBarDelegate{
         return true
     }
 
+    @IBAction func onSearchButtonPressed(sender: AnyObject) {
+        performSegueWithIdentifier("WeatherDetails", sender: weather)
+    }
 }

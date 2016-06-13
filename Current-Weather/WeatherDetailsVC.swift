@@ -20,6 +20,7 @@ class WeatherDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        print(weather.CityName)
         weather.DownloadWeatherDetails { 
             print("download complete")
             self.updateLables()
@@ -32,7 +33,7 @@ class WeatherDetailsVC: UIViewController {
         }
         
         if let country = weather.Country {
-            cityCountryLbl.text = "London, \(country)"
+            cityCountryLbl.text = "\(weather.CityName), \(country)"
         }
         
         if let degree = weather.CurrentTemperature {

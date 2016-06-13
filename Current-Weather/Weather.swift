@@ -23,7 +23,7 @@ class Weather {
     
     init(name: String) {
         self._cityName = name
-        _weatherURL = "\(BASE_URL)&q=\(_cityName)&units=metric&APPID=\(API_KEY)"
+        _weatherURL = "\(BASE_URL)\(_cityName)&units=metric&APPID=\(API_KEY)"
     }
     
     var CityID: Int32! {
