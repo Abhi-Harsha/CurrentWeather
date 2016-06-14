@@ -18,11 +18,16 @@ class Weather {
     private var _country: String!
     private var _windSpeed: String!
     private var _weatherURL: String!
+    private var _List = [Dictionary<String, AnyObject>]()
+    private var _count: Int!
+    private var _encodedURL: String!
     //api.openweathermap.org/data/2.5/find?q=London&units=metric&APPID=3a1fb24814c95d9ddd8d216624be7be2
     
     
-    init(name: String) {
-        self._cityName = name
+    init(name: String?) {
+        if let cityname = name {
+            self._cityName = cityname
+        }
         _weatherURL = "\(BASE_URL)\(_cityName)&units=metric&APPID=\(API_KEY)"
     }
     
@@ -54,14 +59,23 @@ class Weather {
         return _weatherDescription
     }
     
+    var WeatherList: [Dictionary<String, AnyObject>] {
+        return _List
+    }
+    
+    var Count: Int {
+        return _count
+    }
+    
     func DownloadWeatherDetails(completed: DownloadCompleted) {
         let url = NSURL(string: "\(_weatherURL)")
         
         
         Alamofire.request(.GET, url!).responseJSON { (reponse: Response<AnyObject, NSError>) in
         
-            //print(reponse.debugDescription)
+            print(reponse.debugDescription)
             if let weatherDictonary = reponse.result.value as? Dictionary<String, AnyObject> {
+                print(weatherDictonary.debugDescription)
                 //_currentTemp
                 if let weathermain = weatherDictonary["main"] as? Dictionary<String, AnyObject> {
                     if let temp = weathermain["temp"] as? Float {

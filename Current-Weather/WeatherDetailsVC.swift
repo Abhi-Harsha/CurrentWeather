@@ -28,22 +28,31 @@ class WeatherDetailsVC: UIViewController {
     }
     
     func updateLables() {
-        if let weatherdescp = weather.WeatherDescription {
-          weatherDescpLbl.text = weatherdescp
-        }
+            if let weatherdescp = weather.WeatherDescription {
+                weatherDescpLbl.text = weatherdescp
+                if weatherdescp.containsString("Rain") {
+                    weatherIcon.image = UIImage(named: "rainyhollow.png")
+                } else if weatherdescp.containsString("Cloud") {
+                    weatherIcon.image = UIImage(named: "cloudydark.png")
+                } else if weatherdescp.containsString("Sun") || weatherdescp.containsString("Sky") {
+                    weatherIcon.image = UIImage(named: "sunny.png")
+                } else if weatherdescp.containsString("Snow") {
+                    weatherIcon.image = UIImage(named: "snow-1.png")
+                }
+            }
+            
+            if let country = weather.Country {
+                cityCountryLbl.text = "\(weather.CityName), \(country)"
+            }
+            
+            if let degree = weather.CurrentTemperature {
+                degreeLbl.text = "\(degree)°C"
+            }
+            
+            if let windspeed = weather.WindSpeed {
+                windSpeedLbl.text = "\(windspeed) KM\\H"
+            }
         
-        if let country = weather.Country {
-            cityCountryLbl.text = "\(weather.CityName), \(country)"
-        }
-        
-        if let degree = weather.CurrentTemperature {
-            degreeLbl.text = "\(degree)°C"
-        }
-        
-        if let windspeed = weather.WindSpeed {
-            windSpeedLbl.text = "\(windspeed) KM\\H"
-        }
-
     }
 
     @IBAction func onBackBtnPressed(sender: AnyObject) {
