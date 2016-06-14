@@ -29,6 +29,7 @@ class Weather {
             self._cityName = cityname
         }
         _weatherURL = "\(BASE_URL)\(_cityName)&units=metric&APPID=\(API_KEY)"
+        _encodedURL = _weatherURL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
     }
     
     var CityID: Int32! {
@@ -68,7 +69,7 @@ class Weather {
     }
     
     func DownloadWeatherDetails(completed: DownloadCompleted) {
-        let url = NSURL(string: "\(_weatherURL)")
+        let url = NSURL(string: "\(_encodedURL)")
         
         
         Alamofire.request(.GET, url!).responseJSON { (reponse: Response<AnyObject, NSError>) in

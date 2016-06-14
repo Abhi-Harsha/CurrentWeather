@@ -35,23 +35,6 @@
                                 <rect key="frame" x="20" y="222" width="560" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Location name is required" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4c4-nl-NGP">
-                                <rect key="frame" x="198" y="336" width="205" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="0Gk-gV-W5x"/>
-                                    <constraint firstAttribute="height" constant="32" id="359-kX-BWq"/>
-                                    <constraint firstAttribute="height" constant="20" id="eQU-nI-l9U"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                <color key="textColor" red="1" green="0.081228538589999996" blue="0.19420842599999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="0Gk-gV-W5x"/>
-                                        <exclude reference="eQU-nI-l9U"/>
-                                    </mask>
-                                </variation>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oxy-5p-url">
                                 <rect key="frame" x="198" y="285" width="205" height="43"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -75,6 +58,23 @@
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="WeatherDetails" id="60c-Qh-e2S"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Location name is required" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4c4-nl-NGP">
+                                <rect key="frame" x="198" y="336" width="205" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="0Gk-gV-W5x"/>
+                                    <constraint firstAttribute="height" constant="32" id="359-kX-BWq"/>
+                                    <constraint firstAttribute="height" constant="20" id="eQU-nI-l9U"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.08906261790718295" blue="0.20233109417221951" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0Gk-gV-W5x"/>
+                                        <exclude reference="eQU-nI-l9U"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
