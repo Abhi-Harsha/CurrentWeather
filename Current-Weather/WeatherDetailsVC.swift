@@ -15,6 +15,7 @@ class WeatherDetailsVC: UIViewController {
     @IBOutlet weak var weatherDescpLbl: UILabel!
     @IBOutlet weak var cityCountryLbl: UILabel!
     @IBOutlet weak var windSpeedLbl: UILabel!
+    @IBOutlet weak var HumidityLabl: UILabel!
     var weather: Weather!
 
     override func viewDidLoad() {
@@ -50,9 +51,12 @@ class WeatherDetailsVC: UIViewController {
             }
             
             if let windspeed = weather.WindSpeed {
-                windSpeedLbl.text = "\(windspeed) KM\\H"
+                windSpeedLbl.text = "\(windspeed) KM/H"
             }
         
+            if let humidity = weather.Humidity {
+                HumidityLabl.text = humidity
+            }
     }
 
     @IBAction func onBackBtnPressed(sender: AnyObject) {

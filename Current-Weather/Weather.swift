@@ -17,9 +17,9 @@ class Weather {
     private var _weatherDescription: String!
     private var _country: String!
     private var _windSpeed: String!
+    private var _humidity: String!
     private var _weatherURL: String!
-    private var _List = [Dictionary<String, AnyObject>]()
-    private var _count: Int!
+
     private var _encodedURL: String!
     //api.openweathermap.org/data/2.5/find?q=London&units=metric&APPID=3a1fb24814c95d9ddd8d216624be7be2
     
@@ -32,41 +32,38 @@ class Weather {
         _encodedURL = _weatherURL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
     }
     
-    var CityID: Int32! {
+    var CityID: Int32? {
         return _cityID
     }
     
-    var CityName: String! {
+    var CityName: String {
         return _cityName
     }
     
-    var CurrentTemperature: String! {
+    var CurrentTemperature: String? {
         return _currentTemperature
     }
     
-    var Country: String! {
+    var Country: String? {
         return _country
     }
     
-    var WindSpeed: String! {
+    var WindSpeed: String? {
         return _windSpeed
     }
     
-    var WeatherMain: String! {
+    var WeatherMain: String? {
         return _weatherMain
     }
     
-    var WeatherDescription: String! {
+    var WeatherDescription: String? {
         return _weatherDescription
     }
     
-    var WeatherList: [Dictionary<String, AnyObject>] {
-        return _List
+    var Humidity: String? {
+        return _humidity
     }
-    
-    var Count: Int {
-        return _count
-    }
+
     
     func DownloadWeatherDetails(completed: DownloadCompleted) {
         let url = NSURL(string: "\(_encodedURL)")
@@ -82,6 +79,10 @@ class Weather {
                     if let temp = weathermain["temp"] as? Float {
                         self._currentTemperature = "\(temp)"
                         print(self._currentTemperature)
+                    }
+                    
+                    if let humidity = weathermain["humidity"] as? Int {
+                        self._humidity = "\(humidity)"
                     }
                 }
                 //weatherDescription
