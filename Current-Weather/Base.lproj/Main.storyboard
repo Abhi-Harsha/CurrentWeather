@@ -32,10 +32,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="breeze" translatesAutoresizingMaskIntoConstraints="NO" id="Z0z-JP-dA2">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <searchBar contentMode="redraw" misplaced="YES" placeholder="Enter location name" translatesAutoresizingMaskIntoConstraints="NO" id="WlL-Es-ixJ">
-                                <rect key="frame" x="20" y="222" width="560" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oxy-5p-url">
                                 <rect key="frame" x="198" y="285" width="205" height="43"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -76,6 +72,28 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleAspectFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ahH-e4-Ku1">
+                                <rect key="frame" x="198" y="179" width="205" height="21"/>
+                                <color key="backgroundColor" red="0.44559882200000001" green="0.44559882200000001" blue="0.44559882200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="amg-fR-q7t"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="uCX-u5-2rJ"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Celcius"/>
+                                    <segment title="Fahrenheit"/>
+                                </segments>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="uCX-u5-2rJ"/>
+                                    </mask>
+                                </variation>
+                            </segmentedControl>
+                            <searchBar contentMode="redraw" misplaced="YES" placeholder="Enter city name" translatesAutoresizingMaskIntoConstraints="NO" id="WlL-Es-ixJ">
+                                <rect key="frame" x="20" y="222" width="560" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -84,9 +102,13 @@
                             <constraint firstItem="4c4-nl-NGP" firstAttribute="leading" secondItem="Oxy-5p-url" secondAttribute="leading" id="7hv-eN-olU"/>
                             <constraint firstItem="4c4-nl-NGP" firstAttribute="top" secondItem="Oxy-5p-url" secondAttribute="bottom" constant="5" id="9C6-st-Cnt"/>
                             <constraint firstItem="Oxy-5p-url" firstAttribute="top" secondItem="WlL-Es-ixJ" secondAttribute="bottom" constant="19" id="FbJ-jb-UjX"/>
+                            <constraint firstItem="ahH-e4-Ku1" firstAttribute="centerX" secondItem="WlL-Es-ixJ" secondAttribute="centerX" id="Lo9-6i-WA5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ahH-e4-Ku1" secondAttribute="trailing" constant="178" id="Lxj-59-207"/>
                             <constraint firstItem="Oxy-5p-url" firstAttribute="centerX" secondItem="WlL-Es-ixJ" secondAttribute="centerX" id="M8g-CS-C9t"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4c4-nl-NGP" secondAttribute="trailing" constant="177" id="OyM-jk-a97"/>
+                            <constraint firstItem="WlL-Es-ixJ" firstAttribute="top" secondItem="ahH-e4-Ku1" secondAttribute="bottom" constant="8" id="VkS-rI-a13"/>
                             <constraint firstAttribute="trailing" secondItem="Z0z-JP-dA2" secondAttribute="trailing" id="aba-vx-iHd"/>
+                            <constraint firstItem="ahH-e4-Ku1" firstAttribute="leading" secondItem="OrK-SA-gep" secondAttribute="leadingMargin" constant="177" id="caC-jK-I4S"/>
                             <constraint firstItem="4c4-nl-NGP" firstAttribute="trailing" secondItem="Oxy-5p-url" secondAttribute="trailing" id="dX5-YO-dLn"/>
                             <constraint firstItem="WlL-Es-ixJ" firstAttribute="centerY" secondItem="OrK-SA-gep" secondAttribute="centerY" id="g85-Wx-rQS"/>
                             <constraint firstItem="WlL-Es-ixJ" firstAttribute="trailing" secondItem="OrK-SA-gep" secondAttribute="trailingMargin" id="irL-aa-U5j"/>
@@ -107,6 +129,8 @@
                             <mask key="constraints">
                                 <exclude reference="g85-Wx-rQS"/>
                                 <exclude reference="ugW-Cm-ybQ"/>
+                                <exclude reference="Lxj-59-207"/>
+                                <exclude reference="caC-jK-I4S"/>
                                 <exclude reference="FbJ-jb-UjX"/>
                                 <exclude reference="sEy-We-Enf"/>
                                 <exclude reference="vfJ-e7-ZAe"/>
@@ -121,6 +145,7 @@
                     <connections>
                         <outlet property="LocSearchBar" destination="WlL-Es-ixJ" id="cKR-2w-BjB"/>
                         <outlet property="LocValLbl" destination="4c4-nl-NGP" id="lJD-tP-eni"/>
+                        <outlet property="toggleSegControl" destination="ahH-e4-Ku1" id="4zN-D3-5ud"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LWJ-b2-Jj9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -194,23 +219,6 @@
                                 <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="23 °C" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09O-oa-HyL">
-                                <rect key="frame" x="375" y="20" width="205" height="164"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="2Nr-7O-t1Q"/>
-                                    <constraint firstAttribute="height" constant="180" id="7Dg-nI-bTe"/>
-                                    <constraint firstAttribute="width" constant="80" id="r8A-C9-1h6"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="WeatherIcons-Regular" family="Weather Icons" pointSize="50"/>
-                                <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="7Dg-nI-bTe"/>
-                                        <exclude reference="r8A-C9-1h6"/>
-                                    </mask>
-                                </variation>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="sunny" translatesAutoresizingMaskIntoConstraints="NO" id="G2L-ee-8rw">
                                 <rect key="frame" x="20" y="20" width="272" height="279"/>
                                 <constraints>
@@ -242,6 +250,23 @@
                                 <fontDescription key="fontDescription" name="WeatherIcons-Regular" family="Weather Icons" pointSize="25"/>
                                 <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="23 °C" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="09O-oa-HyL">
+                                <rect key="frame" x="375" y="20" width="205" height="164"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="2Nr-7O-t1Q"/>
+                                    <constraint firstAttribute="height" constant="180" id="7Dg-nI-bTe"/>
+                                    <constraint firstAttribute="width" constant="80" id="r8A-C9-1h6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="WeatherIcons-Regular" family="Weather Icons" pointSize="40"/>
+                                <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="7Dg-nI-bTe"/>
+                                        <exclude reference="r8A-C9-1h6"/>
+                                    </mask>
+                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

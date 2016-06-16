@@ -14,6 +14,8 @@ class HomeVC: UIViewController , UISearchBarDelegate{
     @IBOutlet weak var LocValLbl: UILabel!
     var weather: Weather!
     
+    @IBOutlet weak var toggleSegControl: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         LocSearchBar.delegate = self
@@ -24,13 +26,18 @@ class HomeVC: UIViewController , UISearchBarDelegate{
     
     override func viewDidAppear(animated: Bool) {
         LocValLbl.hidden = true
+        view.endEditing(false)
     }
     
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         view.endEditing(true)
         LocValLbl.hidden = true
-        weather = Weather(name: "\(LocSearchBar.text!)")
+        if toggleSegControl.selectedSegmentIndex == 0 {
+            weather = Weather(name: "\(LocSearchBar.text!)",isCelciusSelected: true)
+        } else {
+            weather = Weather(name: "\(LocSearchBar.text!)",isCelciusSelected: false)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

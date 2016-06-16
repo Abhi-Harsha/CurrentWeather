@@ -19,17 +19,26 @@ class Weather {
     private var _windSpeed: String!
     private var _humidity: String!
     private var _weatherURL: String!
+    private var _isCelciusSelected: BooleanType!
 
     private var _encodedURL: String!
     //api.openweathermap.org/data/2.5/find?q=London&units=metric&APPID=3a1fb24814c95d9ddd8d216624be7be2
     
     
-    init(name: String?) {
+    init(name: String?, isCelciusSelected: BooleanType) {
         if let cityname = name {
             self._cityName = cityname
         }
-        _weatherURL = "\(BASE_URL)\(_cityName)&units=metric&APPID=\(API_KEY)"
-        _encodedURL = _weatherURL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        if isCelciusSelected {
+            self._isCelciusSelected = isCelciusSelected
+            _weatherURL = "\(BASE_URL)\(_cityName)&units=metric&APPID=\(API_KEY)"
+            _encodedURL = _weatherURL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        } else {
+            self._isCelciusSelected = isCelciusSelected
+            _weatherURL = "\(BASE_URL)\(_cityName)&units=fahrenheit&APPID=\(API_KEY)"
+            _encodedURL = _weatherURL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        }
+        
     }
     
     var CityID: Int32? {
@@ -62,6 +71,10 @@ class Weather {
     
     var Humidity: String? {
         return _humidity
+    }
+    
+    var CelciusSelected: BooleanType {
+        return _isCelciusSelected
     }
 
     

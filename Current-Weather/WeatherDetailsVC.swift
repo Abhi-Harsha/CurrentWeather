@@ -45,10 +45,18 @@ class WeatherDetailsVC: UIViewController {
             if let country = weather.Country {
                 cityCountryLbl.text = "\(weather.CityName), \(country)"
             }
-            
-            if let degree = weather.CurrentTemperature {
-                degreeLbl.text = "\(degree)°C"
+        
+        
+            if weather.CelciusSelected {
+                if let degree = weather.CurrentTemperature {
+                    degreeLbl.text = "\(degree)°C"
+                }
+            } else {
+                if let degree = weather.CurrentTemperature {
+                    degreeLbl.text = "\(degree)°F"
+                }
             }
+        
             
             if let windspeed = weather.WindSpeed {
                 windSpeedLbl.text = "\(windspeed) KM/H"
