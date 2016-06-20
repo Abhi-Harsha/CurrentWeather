@@ -26,18 +26,13 @@ class HomeVC: UIViewController , UISearchBarDelegate{
     
     override func viewDidAppear(animated: Bool) {
         LocValLbl.hidden = true
-        view.endEditing(false)
+        view.endEditing(false) 
     }
     
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         view.endEditing(true)
         LocValLbl.hidden = true
-        if toggleSegControl.selectedSegmentIndex == 0 {
-            weather = Weather(name: "\(LocSearchBar.text!)",isCelciusSelected: true)
-        } else {
-            weather = Weather(name: "\(LocSearchBar.text!)",isCelciusSelected: false)
-        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -55,6 +50,12 @@ class HomeVC: UIViewController , UISearchBarDelegate{
                 if LocSearchBar.text == nil || LocSearchBar.text == "" {
                     LocValLbl.hidden = false
                     return false
+                } else {
+                    if toggleSegControl.selectedSegmentIndex == 0 {
+                        weather = Weather(name: "\(LocSearchBar.text!)",isCelciusSelected: true)
+                    } else {
+                        weather = Weather(name: "\(LocSearchBar.text!)",isCelciusSelected: false)
+                    }
                 }
                 
             }
@@ -62,7 +63,4 @@ class HomeVC: UIViewController , UISearchBarDelegate{
         return true
     }
 
-    @IBAction func onSearchButtonPressed(sender: AnyObject) {
-        performSegueWithIdentifier("WeatherDetails", sender: weather)
-    }
 }
