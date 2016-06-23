@@ -43,5 +43,7 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location needed to show current weather details</string>
 </dict>
 </plist>

@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import MapKit
 
 class Weather {
     private var _cityID: Int32!
@@ -20,12 +21,14 @@ class Weather {
     private var _humidity: String!
     private var _weatherURL: String!
     private var _isCelciusSelected: BooleanType!
+    private var _latitude: CLLocationDegrees!
+    private var _longitude: CLLocationDegrees!
 
     private var _encodedURL: String!
     //api.openweathermap.org/data/2.5/find?q=London&units=metric&APPID=3a1fb24814c95d9ddd8d216624be7be2
     
     
-    init(name: String?, isCelciusSelected: BooleanType) {
+    init(name: String?, isCelciusSelected: BooleanType, isLocationAuthorized: BooleanType) {
         if let cityname = name {
             self._cityName = cityname
         }
@@ -39,6 +42,9 @@ class Weather {
             _encodedURL = _weatherURL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
         }
         
+        if isLocationAuthorized {
+            
+        }
     }
     
     var CityID: Int32? {

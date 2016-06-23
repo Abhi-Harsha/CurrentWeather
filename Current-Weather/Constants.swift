@@ -22,3 +22,6 @@ typealias DownloadCompleted = () -> ()
 
 //For temperature in Celsius use units=metric
 //api.openweathermap.org/data/2.5/find?q=London&units=metric&APPID=3a1fb24814c95d9ddd8d216624be7be2
+
+//by corordinates
+//api.openweathermap.org/data/2.5/weather?lat=12.89679948996003&lon=77.548581512844706&APPID=3a1fb24814c95d9ddd8d216624be7be2

@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import MapKit
 
 class HomeVC: UIViewController , UISearchBarDelegate{
 
     @IBOutlet weak var LocSearchBar: UISearchBar!
     @IBOutlet weak var LocValLbl: UILabel!
     var weather: Weather!
+    let locationmanager = CLLocationManager()
     
     @IBOutlet weak var toggleSegControl: UISegmentedControl!
     
@@ -40,6 +42,10 @@ class HomeVC: UIViewController , UISearchBarDelegate{
             if let wDetailsVC = segue.destinationViewController as? WeatherDetailsVC {
                 wDetailsVC.weather = self.weather as Weather
             }
+        } else if segue.identifier == "LocationWeatherDetails" {
+            if let wDetailsVC = segue.destinationViewController as? WeatherDetailsVC {
+                wDetailsVC.weather = self.weather as Weather
+            }
         }
     }
     
@@ -47,20 +53,38 @@ class HomeVC: UIViewController , UISearchBarDelegate{
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         if let ident = identifier {
             if ident == "WeatherDetails" {
-                if LocSearchBar.text == nil || LocSearchBar.text == "" {
+                if ((LocSearchBar.text == nil || LocSearchBar.text == "")) {
                     LocValLbl.hidden = false
                     return false
                 } else {
                     if toggleSegControl.selectedSegmentIndex == 0 {
-                        weather = Weather(name: "\(LocSearchBar.text!)",isCelciusSelected: true)
+                        weather = Weather(name: "\(LocSearchBar.text!)",isCelciusSelected: true ,isLocationAuthorized: false)
                     } else {
-                        weather = Weather(name: "\(LocSearchBar.text!)",isCelciusSelected: false)
+                        weather = Weather(name: "\(LocSearchBar.text!)",isCelciusSelected: false ,isLocationAuthorized: false)
                     }
                 }
-                
+            } else if let locationident = identifier {
+                if locationident == "LocationWeatherDetails" {
+                    if checkForUserLocationAuthStatus() {
+                        print(locationmanager.location?.coordinate.latitude)
+                        print(locationmanager.location?.coordinate.longitude)
+                           return true
+                    }
+                    return false
+                }
             }
         }
         return true
     }
+    
+    func checkForUserLocationAuthStatus() -> BooleanType {
+        if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
+            return true
+        } else {
+            locationmanager.requestWhenInUseAuthorization()
+            return false
+        }
+    }
+    
 
 }
