@@ -13,10 +13,15 @@ class HomeVC: UIViewController , UISearchBarDelegate{
 
     @IBOutlet weak var LocSearchBar: UISearchBar!
     @IBOutlet weak var LocValLbl: UILabel!
+    @IBOutlet weak var locationBtn: UIButton!
+    @IBOutlet weak var toggleSegControl: UISegmentedControl!
+    
     var weather: Weather!
+    var isLocationEnabled: BooleanType!
+    
     let locationmanager = CLLocationManager()
     
-    @IBOutlet weak var toggleSegControl: UISegmentedControl!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +33,17 @@ class HomeVC: UIViewController , UISearchBarDelegate{
     
     override func viewDidAppear(animated: Bool) {
         LocValLbl.hidden = true
-        view.endEditing(false) 
+        view.endEditing(false)
+        
+        if checkForUserLocationAuthStatus() {
+            isLocationEnabled = true
+//            locationBtn.enabled = true
+//            locationBtn.alpha = 1.0
+        } else {
+            isLocationEnabled = false
+//            locationBtn.enabled = false
+//            locationBtn.alpha = 0.2
+        }
     }
     
     
@@ -58,17 +73,24 @@ class HomeVC: UIViewController , UISearchBarDelegate{
                     return false
                 } else {
                     if toggleSegControl.selectedSegmentIndex == 0 {
-                        weather = Weather(name: "\(LocSearchBar.text!)",isCelciusSelected: true ,isLocationAuthorized: false)
+                        weather = Weather(name: "\(LocSearchBar.text!)",isCelciusSelected: true ,isLocationAuthorized: false, latitude: 0.0,longitude: 0.0)
                     } else {
-                        weather = Weather(name: "\(LocSearchBar.text!)",isCelciusSelected: false ,isLocationAuthorized: false)
+                        weather = Weather(name: "\(LocSearchBar.text!)",isCelciusSelected: false ,isLocationAuthorized: false, latitude: 0.0,longitude: 0.0)
                     }
                 }
             } else if let locationident = identifier {
                 if locationident == "LocationWeatherDetails" {
                     if checkForUserLocationAuthStatus() {
-                        print(locationmanager.location?.coordinate.latitude)
-                        print(locationmanager.location?.coordinate.longitude)
-                           return true
+                        if let loc = locationmanager.location {
+                            if let lat = loc.coordinate.latitude as? Double , long = loc.coordinate.longitude as? Double {
+                                if toggleSegControl.selectedSegmentIndex == 0 {
+                                    weather = Weather(name: "", isCelciusSelected: true, isLocationAuthorized: true, latitude: lat, longitude: long)
+                                } else {
+                                    weather = Weather(name: "", isCelciusSelected: false, isLocationAuthorized: true, latitude: lat, longitude: long)
+                                }
+                            }
+                            return true
+                        }
                     }
                     return false
                 }

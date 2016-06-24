@@ -131,12 +131,12 @@
                             <constraint firstAttribute="trailingMargin" secondItem="ahH-e4-Ku1" secondAttribute="trailing" constant="178" id="Lxj-59-207"/>
                             <constraint firstItem="Oxy-5p-url" firstAttribute="centerX" secondItem="WlL-Es-ixJ" secondAttribute="centerX" id="M8g-CS-C9t"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4c4-nl-NGP" secondAttribute="trailing" constant="177" id="OyM-jk-a97"/>
-                            <constraint firstItem="WlL-Es-ixJ" firstAttribute="top" secondItem="ahH-e4-Ku1" secondAttribute="bottom" constant="8" id="VkS-rI-a13"/>
+                            <constraint firstItem="WlL-Es-ixJ" firstAttribute="top" secondItem="ahH-e4-Ku1" secondAttribute="bottom" constant="15" id="VkS-rI-a13"/>
                             <constraint firstAttribute="trailing" secondItem="Z0z-JP-dA2" secondAttribute="trailing" id="aba-vx-iHd"/>
                             <constraint firstItem="ahH-e4-Ku1" firstAttribute="leading" secondItem="OrK-SA-gep" secondAttribute="leadingMargin" constant="177" id="caC-jK-I4S"/>
                             <constraint firstItem="4c4-nl-NGP" firstAttribute="trailing" secondItem="Oxy-5p-url" secondAttribute="trailing" id="dX5-YO-dLn"/>
                             <constraint firstItem="WlL-Es-ixJ" firstAttribute="centerY" secondItem="OrK-SA-gep" secondAttribute="centerY" id="g85-Wx-rQS"/>
-                            <constraint firstItem="ahH-e4-Ku1" firstAttribute="top" secondItem="nWP-El-gbm" secondAttribute="bottom" constant="8" id="gDB-HK-MJa"/>
+                            <constraint firstItem="ahH-e4-Ku1" firstAttribute="top" secondItem="nWP-El-gbm" secondAttribute="bottom" constant="20" id="gDB-HK-MJa"/>
                             <constraint firstItem="WlL-Es-ixJ" firstAttribute="trailing" secondItem="OrK-SA-gep" secondAttribute="trailingMargin" id="irL-aa-U5j"/>
                             <constraint firstItem="WlL-Es-ixJ" firstAttribute="centerX" secondItem="OrK-SA-gep" secondAttribute="centerX" id="jY0-LM-eja"/>
                             <constraint firstItem="nWP-El-gbm" firstAttribute="leading" secondItem="OrK-SA-gep" secondAttribute="leadingMargin" constant="178" id="ps4-0O-2a2"/>
@@ -175,6 +175,7 @@
                     <connections>
                         <outlet property="LocSearchBar" destination="WlL-Es-ixJ" id="cKR-2w-BjB"/>
                         <outlet property="LocValLbl" destination="4c4-nl-NGP" id="lJD-tP-eni"/>
+                        <outlet property="locationBtn" destination="nWP-El-gbm" id="8Ts-Z1-6tC"/>
                         <outlet property="toggleSegControl" destination="ahH-e4-Ku1" id="4zN-D3-5ud"/>
                     </connections>
                 </viewController>
@@ -240,7 +241,7 @@
                                     <constraint firstAttribute="width" constant="70" id="lDk-BW-1jI"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cloudy" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uof-38-D2H">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cloudy" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="uof-38-D2H">
                                 <rect key="frame" x="300" y="147" width="280" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="r1H-wm-oNr"/>

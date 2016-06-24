@@ -21,8 +21,10 @@ class WeatherDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        print(weather.CityName)
-        weather.DownloadWeatherDetails { 
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        weather.DownloadWeatherDetails {
             print("download complete")
             self.updateLables()
         }
@@ -31,7 +33,7 @@ class WeatherDetailsVC: UIViewController {
     func updateLables() {
             if let weatherdescp = weather.WeatherDescription {
                 weatherDescpLbl.text = weatherdescp
-                if weatherdescp.containsString("Rain") {
+                if weatherdescp.containsString("Rain") || weatherdescp.containsString("Drizzle") {
                     weatherIcon.image = UIImage(named: "rainyhollow.png")
                 } else if weatherdescp.containsString("Cloud") {
                     weatherIcon.image = UIImage(named: "cloudydark.png")
@@ -43,7 +45,9 @@ class WeatherDetailsVC: UIViewController {
             }
             
             if let country = weather.Country {
-                cityCountryLbl.text = "\(weather.CityName), \(country)"
+                if let name = weather.CityName {
+                    cityCountryLbl.text = "\(name), \(country)"
+                }
             }
         
         

@@ -21,29 +21,42 @@ class Weather {
     private var _humidity: String!
     private var _weatherURL: String!
     private var _isCelciusSelected: BooleanType!
-    private var _latitude: CLLocationDegrees!
-    private var _longitude: CLLocationDegrees!
+    private var _latitude: Double!
+    private var _longitude: Double!
 
     private var _encodedURL: String!
     //api.openweathermap.org/data/2.5/find?q=London&units=metric&APPID=3a1fb24814c95d9ddd8d216624be7be2
+    //http://api.openweathermap.org/data/2.5/weather?lat=12.89679948996003&lon=77.548581512844706&units=metric&APPID=3a1fb24814c95d9ddd8d216624be7be2
     
     
-    init(name: String?, isCelciusSelected: BooleanType, isLocationAuthorized: BooleanType) {
-        if let cityname = name {
+    init(name: String?, isCelciusSelected: BooleanType, isLocationAuthorized: BooleanType, latitude: Double?, longitude: Double?) {
+        if let cityname = name where cityname != ""{
             self._cityName = cityname
-        }
-        if isCelciusSelected {
-            self._isCelciusSelected = isCelciusSelected
-            _weatherURL = "\(BASE_URL)\(_cityName)&units=metric&APPID=\(API_KEY)"
-            _encodedURL = _weatherURL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
-        } else {
-            self._isCelciusSelected = isCelciusSelected
-            _weatherURL = "\(BASE_URL)\(_cityName)&units=fahrenheit&APPID=\(API_KEY)"
-            _encodedURL = _weatherURL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+            if isCelciusSelected {
+                self._isCelciusSelected = isCelciusSelected
+                _weatherURL = "\(BASE_URL)?q=\(_cityName)&units=metric&APPID=\(API_KEY)"
+                _encodedURL = _weatherURL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+            } else {
+                self._isCelciusSelected = isCelciusSelected
+                _weatherURL = "\(BASE_URL)?&q=\(_cityName)&units=fahrenheit&APPID=\(API_KEY)"
+                _encodedURL = _weatherURL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+            }
         }
         
         if isLocationAuthorized {
-            
+            if let lat = latitude , long = longitude  {
+                self._latitude = lat
+                self._longitude = long
+                if isCelciusSelected{
+                    self._isCelciusSelected = isCelciusSelected
+                    _weatherURL = "\(BASE_URL)?lat=\(_latitude)&lon=\(_longitude)&units=metric&APPID=\(API_KEY)"
+                    _encodedURL = _weatherURL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+                } else {
+                    self._isCelciusSelected = isCelciusSelected
+                    _weatherURL = "\(BASE_URL)?lat=\(_latitude)&lon=\(_longitude)&units=fahrenheit&APPID=\(API_KEY)"
+                    _encodedURL = _weatherURL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+                }
+            }
         }
     }
     
@@ -51,32 +64,53 @@ class Weather {
         return _cityID
     }
     
-    var CityName: String {
-        return _cityName
+    var CityName: String? {
+        if let name = _cityName {
+            return name
+        }
+        return ""
     }
     
     var CurrentTemperature: String? {
-        return _currentTemperature
+        if let temp = _currentTemperature {
+            return temp
+        }
+        return ""
     }
     
     var Country: String? {
-        return _country
+        if let country = _country {
+            return country
+        }
+        return ""
     }
     
     var WindSpeed: String? {
-        return _windSpeed
+        if let speed = _windSpeed {
+            return speed
+        }
+        return ""
     }
     
     var WeatherMain: String? {
-        return _weatherMain
+        if let weathermain = _weatherMain {
+            return weathermain
+        }
+        return ""
     }
     
     var WeatherDescription: String? {
-        return _weatherDescription
+        if let weatherdescp = _weatherDescription {
+            return weatherdescp
+        }
+        return ""
     }
     
     var Humidity: String? {
-        return _humidity
+        if let humid = _humidity {
+            return humid
+        }
+        return ""
     }
     
     var CelciusSelected: BooleanType {
@@ -93,6 +127,11 @@ class Weather {
             print(reponse.debugDescription)
             if let weatherDictonary = reponse.result.value as? Dictionary<String, AnyObject> {
                 print(weatherDictonary.debugDescription)
+                
+                //city name
+                if let name = weatherDictonary["name"] as? String {
+                    self._cityName = name
+                }
                 //_currentTemp
                 if let weathermain = weatherDictonary["main"] as? Dictionary<String, AnyObject> {
                     if let temp = weathermain["temp"] as? Float {
