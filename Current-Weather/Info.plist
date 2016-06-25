@@ -44,6 +44,6 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Location needed to show current weather details</string>
+	<string>Location needed to show current weather details in your location</string>
 </dict>
 </plist>

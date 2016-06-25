@@ -8,9 +8,11 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class HomeVC: UIViewController , UISearchBarDelegate{
+class HomeVC: UIViewController , UISearchBarDelegate, CLLocationManagerDelegate{
 
+    @IBOutlet weak var LocationStatusLbl: UILabel!
     @IBOutlet weak var LocSearchBar: UISearchBar!
     @IBOutlet weak var LocValLbl: UILabel!
     @IBOutlet weak var locationBtn: UIButton!
@@ -27,23 +29,15 @@ class HomeVC: UIViewController , UISearchBarDelegate{
         super.viewDidLoad()
         LocSearchBar.delegate = self
         LocSearchBar.returnKeyType = UIReturnKeyType.Done
+        locationmanager.delegate = self
 
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(animated: Bool) {
         LocValLbl.hidden = true
+        LocationStatusLbl.hidden = true
         view.endEditing(false)
-        
-        if checkForUserLocationAuthStatus() {
-            isLocationEnabled = true
-//            locationBtn.enabled = true
-//            locationBtn.alpha = 1.0
-        } else {
-            isLocationEnabled = false
-//            locationBtn.enabled = false
-//            locationBtn.alpha = 0.2
-        }
     }
     
     
@@ -90,6 +84,9 @@ class HomeVC: UIViewController , UISearchBarDelegate{
                                 }
                             }
                             return true
+                        } else{
+                            LocationStatusLbl.text = "Location status not updated! please try again after sometime"
+                            LocationStatusLbl.hidden = false
                         }
                     }
                     return false
