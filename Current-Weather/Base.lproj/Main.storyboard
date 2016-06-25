@@ -76,30 +76,6 @@
                                 <rect key="frame" x="20" y="222" width="560" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWP-El-gbm">
-                                <rect key="frame" x="198" y="120" width="205" height="43"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="170" id="5Ed-nX-ALF"/>
-                                    <constraint firstAttribute="height" constant="40" id="VTJ-lP-Cic"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="j0W-nA-L2V"/>
-                                    <constraint firstAttribute="height" constant="40" id="qRK-hO-JBJ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="WeatherIcons-Regular" family="Weather Icons" pointSize="15"/>
-                                <state key="normal" title="Weather in my location">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.89749755509999996" green="0.92002475340000001" blue="0.98760634820000004" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="VTJ-lP-Cic"/>
-                                        <exclude reference="j0W-nA-L2V"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="LocationWeatherDetails" id="aLi-cB-Uan"/>
-                                </connections>
-                            </button>
                             <segmentedControl opaque="NO" contentMode="scaleAspectFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ahH-e4-Ku1">
                                 <rect key="frame" x="198" y="179" width="205" height="21"/>
                                 <color key="backgroundColor" red="0.44559882200000001" green="0.44559882200000001" blue="0.44559882200000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -142,6 +118,30 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWP-El-gbm">
+                                <rect key="frame" x="198" y="120" width="205" height="43"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="5Ed-nX-ALF"/>
+                                    <constraint firstAttribute="height" constant="40" id="VTJ-lP-Cic"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="j0W-nA-L2V"/>
+                                    <constraint firstAttribute="height" constant="40" id="qRK-hO-JBJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="WeatherIcons-Regular" family="Weather Icons" pointSize="15"/>
+                                <state key="normal" title="Weather in my location">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.89749755509999996" green="0.92002475340000001" blue="0.98760634820000004" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="VTJ-lP-Cic"/>
+                                        <exclude reference="j0W-nA-L2V"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="LocationWeatherDetails" id="aLi-cB-Uan"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -218,6 +218,7 @@
                         <outlet property="LocSearchBar" destination="WlL-Es-ixJ" id="cKR-2w-BjB"/>
                         <outlet property="LocValLbl" destination="4c4-nl-NGP" id="lJD-tP-eni"/>
                         <outlet property="LocationStatusLbl" destination="zLy-F9-guj" id="u7L-hr-BRf"/>
+                        <outlet property="SearchBtn" destination="Oxy-5p-url" id="FJn-SW-ybo"/>
                         <outlet property="locationBtn" destination="nWP-El-gbm" id="8Ts-Z1-6tC"/>
                         <outlet property="toggleSegControl" destination="ahH-e4-Ku1" id="4zN-D3-5ud"/>
                     </connections>

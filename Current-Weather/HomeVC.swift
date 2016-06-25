@@ -12,6 +12,7 @@ import CoreLocation
 
 class HomeVC: UIViewController , UISearchBarDelegate, CLLocationManagerDelegate{
 
+    @IBOutlet weak var SearchBtn: UIButton!
     @IBOutlet weak var LocationStatusLbl: UILabel!
     @IBOutlet weak var LocSearchBar: UISearchBar!
     @IBOutlet weak var LocValLbl: UILabel!
@@ -30,6 +31,11 @@ class HomeVC: UIViewController , UISearchBarDelegate, CLLocationManagerDelegate{
         LocSearchBar.delegate = self
         LocSearchBar.returnKeyType = UIReturnKeyType.Done
         locationmanager.delegate = self
+        locationBtn.alpha = 0.7
+        SearchBtn.alpha = 0.7
+        locationBtn.layer.cornerRadius = 5
+        SearchBtn.layer.cornerRadius = 5
+        toggleSegControl.layer.cornerRadius = 5
 
         // Do any additional setup after loading the view.
     }
